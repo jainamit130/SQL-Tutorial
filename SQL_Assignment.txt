@@ -1,0 +1,320 @@
+#QUESTION 1 : Create Student Database
+
+create Database Student;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+#Question 2 : Create the following table under the Student Database
+
+create table StudentBasicInformation(
+StudentName varchar(255),
+StudentSurname varchar(255),
+StudentRollNo int Primary Key,
+StudentAddress varchar(255),
+StudentBranch varchar(255),
+StudentBloodGroup char(3),
+StudentSection char(1)
+);
+
+create table StudentAdmissionPaymentDetails(
+StudentRollNo int primary key,
+AmountPaid float,
+AmountBalance float,
+TransactionID int not null,
+FeeType varchar(255),
+PaymentDate Date not null,
+StudentID int not null
+);
+
+create table StudentSubjectInformation(
+SubjectOpted varchar(255),
+StudentRollNo int Primary Key,
+SubjectTotalMarks int,
+SubjectObtainedMarks int,
+StudentMarksPercentage float,
+SubjectSpecialization varchar(255)
+);
+
+create Table SubjectScholarshipInformation(
+StudentRollNo int Primary Key,
+ScholarshipName varchar(255),
+ScholarshipDescription varchar(155),
+ScholarshipAmount float,
+ScholarshipCategory varchar(255),
+ScholorshipMarkPercent float,
+ScholorshipDate Date 
+);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#Question 3 : Insert more than 10 records in each and every table created
+
+INSERT into StudentBasicInformation
+(StudentName,StudentSurname,StudentRollNo,StudentAddress,StudentBranch,StudentBloodGroup,StudentSection)
+values
+('Amit','Choraria',57,'Kolkata, West Bengal','ECE','A+','F'),
+('Rahul','Jain',24,'Patna, Bihar','ME','O','C'),
+('Sukriti','Jain',49,'Mumbai, Maharashtra','CSE','AB','A'),
+('Payal','Grover',29,'Kolkata, West Bengal','IT','B','F'),
+('Aayush','Chodhary',51,'New Delhi','CSE','AB+','C'),
+('Aastha','Saxena',18,'Amritsar, Punjab','ECE','A+','F'),
+('Gaurav','Jain',20,'Mumbai, Maharashtra','ME','O','A'),
+('Gayatri','Singh',22,'Durapur, West Bengal','ECE','A+','F'),
+('Heena','Dugar',45,'Chennai, Tamil Nadu','CSE','B+','B'),
+('Sanjana','Padukone',32,'Bangalore, Karnataka','CSE','O+','E');
+
+INSERT into StudentAdmissionPaymentDetails (StudentRollNo,AmountPaid,AmountBalance,TransactionID,FeeType,PaymentDate,StudentID)
+values
+(57,7000.87,20000.87,8764,'Course Fee','2022-01-21',8),
+(24,11640.50,18000.70,5926,'Course Fee','2021-12-19',5),
+(49,100,5000,7241,'Official Transcript Fee','2022-01-11',7),
+(29,1000,17568,1893,'No Objection Certificate Fee','2022-01-12',1),
+(51,17454.50,21000.50,4514,'Course Fee','2022-01-15',4),
+(18,13040,22000,9755,'Course Fee','2022-01-05',9),
+(20,100,8155,6247,'Official Transcript Fee','2022-01-03',6),
+(22,17000.87,28000.55,2764,'Hostel Fee','2021-12-29',2),
+(45,15047.87,20048.87,3564,'Course Fee','2022-01-21',3),
+(32,16049.24,25004.30,10164,'Hostel Fee','2021-11-29',10);
+
+INSERT into StudentSubjectInformation (SubjectOpted ,StudentRollNo ,SubjectTotalMarks ,SubjectObtainedMarks ,StudentMarksPercentage ,SubjectSpecialization)
+values
+('Object Oriented Programming',57,200,188,null,'Fundamentals of Computing'),
+('R Proramming',24,200,181,null,'Data Science'),
+('Software Development',49,200,96,null,'Fundamentals of Computing'),
+('Software Development',29,200,182,null,'Fundamentals of Computing'),
+('Data Mining',51,500,472,null,'Digital Marketing'),
+('Social Media Marketing',18,300,233,null,'Human Resource Management'),
+('Python Programming',20,300,289,null,'Python Fundamentals'),
+('Software Development',22,200,186,null,'Fundamentals of Computing');
+#('Data Mining',45,500,364,null,'Digital Marketing'),
+#('Data Mining',32,500,467,null,'Digital Marketing');
+
+INSERT into SubjectScholarshipInformation (StudentRollNo,ScholarshipName ,ScholarshipDescription ,ScholarshipAmount ,ScholarshipCategory ,ScholorshipMarkPercent ,ScholorshipDate)
+values
+(57,'INSPIRE Scholarship', 'Scholarship to the top 1% of students',30000,'Educational',94,'2021-12-05'),
+(24,'INSPIRE Scholarship', 'Scholarship to the top 1% of students',60000,'Educational',90.5,'2021-12-05'),
+(49,'Single Girl Child Scholarship', 'Scholarship to Candidates who are taking admission on Post Graduate regular course and have no siblings',2000,'Financial',48,'2022-01-06'),
+(29,'Single Girl Child Scholarship', 'Scholarship to Candidates who are taking admission on Post Graduate regular course and have no siblings',2000,'Financial',91,'2022-01-06'),
+(51,'INSPIRE Scholarship', 'Scholarship to the top 1% of students',100000,'Educational',94.4,'2021-12-05'),
+(18,'INSPIRE Scholarship', 'Scholarship to the top 1% of students',5000,'Educational',77,'2021-12-05'),
+(20,'Government Scholarship', 'Scholarship to the students suffering from Financial Stability',15000,'Financial',90,'2021-01-03'),
+(22,'Government Scholarship', 'Scholarship to the students suffering from Financial Stability',15000,'Financial',90,'2021-01-03');
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 4 & 6 : Snap of the all the tables once the insertion is completed
+
+TRUNCATE TABLE StudentBasicInformation;
+TRUNCATE TABLE StudentAdmissionPaymentDetails;
+TRUNCATE TABLE StudentSubjectInformation;
+TRUNCATE TABLE SubjectScholarshipInformation;
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+
+DROP TABLE StudentBasicInformation;
+DROP TABLE StudentAdmissionPaymentDetails;
+DROP TABLE StudentSubjectInformation;
+DROP TABLE SubjectScholarshipInformation;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+select * from StudentBasicInformation;
+select * from StudentAdmissionPaymentDetails;
+select * from StudentSubjectInformation;
+select * from SubjectScholarshipInformation;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 5 : Update any 5 records of your choice in any table like update the StudentAddress with some other address content and likewise so on with any records of any table of your choice
+
+UPDATE StudentBasicInformation
+SET StudentSurname='Rupda'
+WHERE StudentRollNo=51;
+
+UPDATE StudentBasicInformation
+SET StudentAddress = 'Gurgaon, Haryana'
+WHERE StudentRollNo = 29;
+
+UPDATE StudentAdmissionPaymentDetails
+SET AmountBalance= 24000.5
+WHERE StudentRollNo = 57;
+
+UPDATE StudentAdmissionPaymentDetails
+SET PaymentDate= '2022-01-10'
+WHERE StudentRollNo = 57;
+
+UPDATE StudentSubjectInformation
+SET SubjectObtainedMarks=89 , StudentMarksPercentage=88.50
+WHERE StudentRollNo = 32;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 7 : Select the student details records who has received the scholarship more than 5000Rs/- 
+
+SELECT SBI.StudentName,SBI.StudentSurname,SBI.StudentRollNo,SSI.ScholarshipName,SSI.ScholarshipAmount 
+FROM StudentBasicInformation as SBI INNER JOIN SubjectScholarshipInformation as SSI
+ON SBI.StudentRollNo=SSI.StudentRollNo
+WHERE SSI.ScholarshipAmount>5000
+ORDER BY SBI.StudentRollNo;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 8 : Select the students who opted for scholarship but has not got the scholarship
+
+SELECT SBI.StudentName,SBI.StudentSurname,SBI.StudentRollNo 
+FROM StudentBasicInformation as SBI
+WHERE SBI.StudentRollNo NOT IN (Select StudentRollNo FROM SubjectScholarshipInformation);
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 9 : Fill in data for the percentage column i.e. StudentMarksPercentage in the table StudentSubjectInformation by creating and using the stored procedure created
+
+DROP procedure IF EXISTS AddStudentMarkPercentage;
+
+DELIMITER //
+CREATE PROCEDURE AddStudentMarkPercentage()
+BEGIN
+    UPDATE StudentSubjectInformation 
+	SET StudentMarksPercentage=((SubjectObtainedMarks/SubjectTotalMarks)*100);
+END //
+
+CALL AddStudentMarkPercentage();
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 10 : Decide the category of the scholarship depending upon the marks/percentage obtained by the student and likewise update the ScholarshipCategory column, create a stored procedure in order to handle this operation
+
+DROP procedure IF EXISTS ScholorshipClassification;
+
+DELIMITER $$
+CREATE PROCEDURE ScholorshipClassification ()
+BEGIN
+    UPDATE SubjectScholarshipInformation AS SSI INNER JOIN StudentSubjectInformation AS SBI ON SSI.StudentRollNo=SBI.StudentRollNo 
+	SET ScholarshipName='ELEVATE Scholorship',
+		ScholarshipDescription='Students Category Scoring Between 40%-60%',
+        ScholarshipAmount=5000,
+        ScholarshipCategory='Educational Category 1'
+	WHERE SSI.StudentRollNo=SBI.StudentRollNo and StudentMarksPercentage BETWEEN 40 AND 60;
+    UPDATE SubjectScholarshipInformation AS SSI INNER JOIN StudentSubjectInformation AS SBI ON SSI.StudentRollNo=SBI.StudentRollNo 
+	SET ScholarshipName='GOVERNMENT Scholorship',
+		ScholarshipDescription='Students Category Scoring Between 60%-80%',
+        ScholarshipAmount=15000,
+        ScholarshipCategory='Educational Category 2'
+	WHERE SSI.StudentRollNo=SBI.StudentRollNo and StudentMarksPercentage BETWEEN 60 AND 80;
+    UPDATE SubjectScholarshipInformation AS SSI INNER JOIN StudentSubjectInformation AS SBI ON SSI.StudentRollNo=SBI.StudentRollNo 
+	SET ScholarshipName='INSPIRE Scholorship',
+		ScholarshipDescription='Students Category Scoring Between 80%-100%',
+        ScholarshipAmount=30000,
+        ScholarshipCategory='Educational Category 3'
+	WHERE SSI.StudentRollNo=SBI.StudentRollNo and StudentMarksPercentage BETWEEN 80 AND 100;
+END $$
+
+
+CALL ScholorshipClassification;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 11 : Create the View which shows balance amount to be paid by the student along with the student detailed information (use join)
+
+DROP VIEW IF EXISTS BalanceDetails;
+
+Create View BalanceDetails AS
+Select SAPD.AmountBalance,SBI.* from 
+StudentAdmissionPaymentDetails as SAPD JOIN StudentBasicInformation as SBI
+on SAPD.StudentRollNo=SBI.StudentRollNo;
+
+Select * from BalanceDetails;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 12 : Get the details of the students who haven’t got any scholarship (use joins/subqueries)
+
+SELECT SBI.* 
+FROM StudentBasicInformation as SBI
+WHERE SBI.StudentRollNo NOT IN (Select StudentRollNo FROM SubjectScholarshipInformation);
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 13 : Create Stored Procedure which will be return the amount balance to be paid by the student as per the student roll number passed through the stored procedure as the input
+
+drop procedure if exists AmountBalanceFunction;
+
+DELIMITER //
+CREATE PROCEDURE AmountBalanceFunction( IN RollNo int, OUT ReturnVal float)
+BEGIN
+    Select AmountBalance From StudentAdmissionPaymentDetails
+    WHERE StudentRollNo=RollNo;
+    SET ReturnVal = AmountBalance;
+    Select @ReturnVal;
+END //
+
+CALL AmountBalanceFunction(29,@Returned_Value);
+Select @Returned_Value;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 14 : Retrieve the top five student details as per the StudentMarksPercentage values (use subqueries)
+
+SELECT SBI.*,SSI.StudentMarksPercentage FROM StudentBasicInformation AS SBI INNER JOIN StudentSubjectInformation AS SSI
+ON SBI.StudentRollNo=SSI.StudentRollNo
+ORDER BY SSI.StudentMarksPercentage DESC
+LIMIT 5;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 15 : Try to use all the three types of join learned today in a relevant way, and explain the same why you thought of using that particular join for your selected scenarios (try to cover relevant and real time scenarios for all the three studied joins)
+
+#INNER JOIN EXAMPLE: Basic Information of Students who have gotten the INSPIRE Scholorship
+SELECT SBI.*,SSI.ScholarshipName FROM StudentBasicInformation AS SBI INNER JOIN SubjectScholarshipInformation AS SSI
+ON SBI.StudentRollNo=SSI.StudentRollNo
+WHERE SSI.ScholarshipName='INSPIRE Scholarship'
+ 
+#Left Outer Join Example: To Show the Students and the Scholorship they have gotten if any (NULL Value Shows that the student has no Scholorship)
+SELECT SBI.*,SSI.ScholarshipName FROM StudentBasicInformation AS SBI LEFT JOIN SubjectScholarshipInformation AS SSI
+ON SBI.StudentRollNo=SSI.StudentRollNo
+
+#Right Join Example: To Show the Students who have not opted for any Subject as of yet
+SELECT SBI.StudentName,SSI.SubjectOpted FROM StudentSubjectInformation AS SSI Right JOIN StudentBasicInformation AS SBI
+ON SBI.StudentRollNo=SSI.StudentRollNo
+WHERE SSI.SubjectOpted IS NULL;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 16 : Mention the differences between the delete, drop and truncate commands
+
+#DELETE COMMAND IS USED TO REMOVE A PARTICULAR (OR ALL TUPLES) TUPLE FROM A RECORD
+Delete From SubjectScholarshipInformation 
+WHERE StudentRollNo=22; 
+
+#TRUNCATE COMMAND IS USED TO DELETE ALL THE RECORDS FROM A TABLE
+TRUNCATE TABLE StudentAdmissionPaymentDetails;
+
+#DROP COMMAND IS USED TO COMPLETELY REMOVE THE ENTIRE TABLE/PROCEDURE/VIEW/TRIGGER DEFINITION FROM THE DATABASE
+DROP TABLE StudentAdmissionPaymentDetails;
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 17 : Get the count of the Scholarship category which is highly been availed by the students, i.e. get the count of the total number of students corresponding to the each scholarships category
+
+SELECT COUNT(StudentRollNo) AS COUNTS,ScholarshipName,ScholarshipCategory FROM SubjectScholarshipInformation
+Group By ScholarshipName
+ORDER BY COUNT(StudentRollNo) DESC;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 18 : Along with the assignment no. 17 try to retrieve the maximum used scholarship category
+
+Select MAX(COUNTS) AS Max_Count,ScholarshipName,ScholarshipCategory FROM
+(SELECT COUNT(StudentRollNo) AS COUNTS,ScholarshipName,ScholarshipCategory
+FROM SubjectScholarshipInformation
+Group By ScholarshipName) AS ALIAS;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 19 : Retrieve the percentage of the students along with students detailed information who has scored the highest percentage along with availing the maximum scholarship amount
+
+SELECT Max(SSI.ScholorshipMarkPercent) AS Max_Percentage_Secured,MAX(SSI.ScholarshipAmount) AS Max_Scholorship_Amount,SBI.* FROM SubjectScholarshipInformation AS SSI INNER JOIN StudentBasicInformation AS SBI 
+ON SBI.StudentRollNo=SSI.StudentRollNo;
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+#QUESTION 20 : Difference between the Triggers, Stored Procedures, Views and Functions
+
+DROP TRIGGER IF EXISTS Initial_Marks_Check;
+
+#Triggers are special type of stored procedure which gets called automatically when a particular event occurs
+delimiter //
+CREATE TRIGGER Initial_Marks_Check BEFORE INSERT
+ON StudentSubjectInformation
+FOR EACH ROW
+IF NEW.SubjectObtainedMarks < 0 THEN
+SET NEW.SubjectObtainedMarks := 50;
+END IF; //
+delimiter ;
+
+#Stored Procedure Are functions which may or may not return values
+#Functions are like stored procedures which mandatorily return values
+#Views are Virtual tables but which does not store any values in the database
+
+
